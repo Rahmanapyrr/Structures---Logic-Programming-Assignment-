@@ -13,3 +13,6 @@ getitems([], L) :- L=[].
 getitems([H|T], L) :-
     getitems(T,NewListTail),
     (not(is_list(H)) -> L = [H|NewListTail]; getitems(H,NewListHead), append(NewListHead, NewListTail, L)).
+
+sum-up-numbers([],0).
+sum-up-numbers([H|T],N):- \+(number(H))->sum-up-numbers(T,N);sum-up-numbers(T,N1),N is N1 + H.
