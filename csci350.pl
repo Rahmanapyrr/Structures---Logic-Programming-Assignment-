@@ -1,4 +1,6 @@
-%hello world
+%append function
+append([],L,L).
+append([H|T],L2,[H|L3]):-append(T,L2,L3).
 
 %sum of up the numbers in the list.
 sum([Head|Tail], N):-
