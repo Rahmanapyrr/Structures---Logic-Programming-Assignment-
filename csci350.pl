@@ -39,6 +39,29 @@ min_in_list([H,K|T],M) :-
 min_in_list([H,K|T],M) :-
     H > K,                              % H is greater than K
     min_in_list([K|T],M).               % so use K
+    
+    
+check([], _, []).
+check([H|T], Min, Rest) :-
+    not(number(H)), 
+    check(T, Min, Rest),!.
+
+check([H|T], Min, Rest) :-
+    number(H), %if the first element is a number and greater than the provided minimum, add to the list.
+    H > Min,
+    check(T, Min, Rest1),
+    append([H], Rest1, Rest),!.
+
+check([_|T], Min, Rest) :-
+    check(T, Min, Rest),!. %If the first element is a number and is less than the provided list, recursively call minimumcheck.
+
+min-above-min(L1, [], N) :- min_in_list(L1, N). %If the second list is empty, then getminimum is called on the first list.
+
+
+min-above-min(L1, L2, N) :-
+    min_in_list(L2, Minimumnumber),
+    check(L1, Minimumnumber, List),
+    min_in_list(List, N),!.
 
 
 % Predicate 4.
