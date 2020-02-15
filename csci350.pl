@@ -30,3 +30,5 @@ sum-up-numbers-general(L, N):-getitems(L,I), sum-up-numbers(I, N).
 %function to flatten list
 flat-list([], L):- L = [].
 
+flat-list([H|T], List) :- is_list(H), flat-list(H, List1), flat-list(T, List2), append(List1, List2, List).
+
