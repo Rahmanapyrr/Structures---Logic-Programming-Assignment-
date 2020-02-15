@@ -2,14 +2,8 @@
 append([],L,L).
 append([H|T],L2,[H|L3]):-append(T,L2,L3).
 
-%sum of up the numbers in the list.
-sum([Head|Tail], N):-
-    sum(Tail, N1),
-    N is N1 + Head.
+% Predicate 1
+% Function to sum not nested numbers only
 
-%function to get only sum of numbers.
-sum-up-numbers-simple([], 0).
-
-sum-up-numbers-simple(L, N):-
-    getnumbersfromlist(L,S),
-    sum(S,N).
+sum-up-numbers-simple([],0).
+sum-up-numbers-simple([H|T],N):- \+(number(H))->sum-up-numbers-simple(T,N);sum-up-numbers-simple(T,N1),N is N1 + H.
