@@ -40,3 +40,6 @@ intersection(_, [], []).
 
 intersection([H|T], L, [H|NewList]) :- member(H, L), intersection(T, L, NewList),!.
 intersection([H|T], L, Trash) :- not(member(H, L)), intersection(T, L, Trash),!.
+
+%function to get the common elements in two lists.
+common-unique-elements(L1, L2, N) :- flat-list(L1, List1), flat-list(L2, List2), intersection(List1, List2, N).
