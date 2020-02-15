@@ -30,5 +30,13 @@ sum-up-numbers-general(L, N):-getitems(L,I), sum-up-numbers(I, N).
 %function to flatten list
 flat-list([], L):- L = [].
 
-flat-list([H|T], List) :- is_list(H), flat-list(H, List1), flat-list(T, List2), append(List1, List2, List).
+flat-list([H|T], List) :- is_list(H), flat-list(H, List1), flat-list(T, List2), append(List1, List2, List
+flat-list([H|T], List) :- not(is_list(H))-> flat-list(T, List1), append([H], List1, List),!.
 
+
+%finds the intersection of two lists.
+intersection([], _, []). %if one list is empty, return an empty list.
+intersection(_, [], []).
+
+intersection([H|T], L, [H|NewList]) :- member(H, L), intersection(T, L, NewList),!.
+intersection([H|T], L, Trash) :- not(member(H, L)), intersection(T, L, Trash),!.
