@@ -8,6 +8,7 @@ append([H|T],L2,[H|L3]):-append(T,L2,L3).
 sum-up-numbers-simple([],0).
 sum-up-numbers-simple([H|T],N):- \+(number(H))->sum-up-numbers-simple(T,N);sum-up-numbers-simple(T,N1),N is N1 + H.
 
+% Predicate Number 2
 % flattens a nested list into a single list.
 getitems([], L) :- L=[].
 getitems([H|T], L) :-
@@ -24,3 +25,8 @@ sum-list([H|T], N):-sum-list(T, N1),N is N1 + H.
 %final function
 sum-up-numbers-general([], 0).
 sum-up-numbers-general(L, N):-getitems(L,I), sum-up-numbers(I, N).
+
+% Predicate 4.
+%function to flatten list
+flat-list([], L):- L = [].
+
