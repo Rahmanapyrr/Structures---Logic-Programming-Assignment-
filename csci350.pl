@@ -16,3 +16,8 @@ getitems([H|T], L) :-
 
 sum-up-numbers([],0).
 sum-up-numbers([H|T],N):- \+(number(H))->sum-up-numbers(T,N);sum-up-numbers(T,N1),N is N1 + H.
+
+%sum of up the numbers in a list.
+sum-list([], 0).
+sum-list([H|T], N):-sum-list(T, N1),N is N1 + H.
+
