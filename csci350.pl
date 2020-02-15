@@ -35,10 +35,11 @@ min_in_list([Min],Min).                 % We've found the minimum
 min_in_list([H,K|T],M) :-
     H =< K,                             % H is less than or equal to K
     min_in_list([H|T],M).               % so use H
-
-min_in_list([H,K|T],M) :-
+    
+ min_in_list([H,K|T],M) :-
     H > K,                              % H is greater than K
     min_in_list([K|T],M).               % so use K
+
 
 % Predicate 4.
 %function to flatten list
