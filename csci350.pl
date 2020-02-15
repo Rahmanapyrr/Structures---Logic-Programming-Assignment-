@@ -21,3 +21,6 @@ sum-up-numbers([H|T],N):- \+(number(H))->sum-up-numbers(T,N);sum-up-numbers(T,N1
 sum-list([], 0).
 sum-list([H|T], N):-sum-list(T, N1),N is N1 + H.
 
+%final function
+sum-up-numbers-general([], 0).
+sum-up-numbers-general(L, N):-getitems(L,I), sum-up-numbers(I, N).
